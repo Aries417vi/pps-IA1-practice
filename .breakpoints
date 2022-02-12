@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "p7original.c": [
+      {
+        "id": "64a225a7-0e80-489e-9469-dfa5b2377ea3",
+        "line": 1,
+        "version": 0,
+        "index": 0
+      }
+    ]
+  }
 }
