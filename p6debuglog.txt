@@ -1,10 +1,10 @@
  gcc -g p6original.c
  ./a.out
-enter the value of the first strings:ace
-enter the value of the second strings:run
+enter the value of the first strings:run 
+enter the value of the second strings:world
+world
+is greater than the word
 run
-is greater than the
-ace
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
@@ -22,33 +22,72 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
 (gdb) b main
-Breakpoint 1 at 0x900: file p6original.c, line 61.
+Breakpoint 1 at 0x8e0: file p6original.c, line 62.
 (gdb) r
 Starting program: /home/runner/pps-IA1-practice/a.out 
 warning: Error disabling address space randomization: Operation not permitted
 
-Breakpoint 1, main () at p6original.c:61
-61  {
+Breakpoint 1, main () at p6original.c:62
+62  {
 (gdb) n
-65      input_two_string(farr,sarr);
+66      input_two_string(farr,sarr);
+(gdb) s
+input_two_string (a=0x7fffbb45c6a0 "\b\307E\273\377\177", 
+    b=0x7fffbb45c6c0 "@\253Ν4\177") at p6original.c:5
+5       printf("enter the value of the first strings:");
 (gdb) n
-enter the value of the first strings:run
-enter the value of the second strings:god
-66      r=strcmp(farr,sarr);
+6       fgets(a,30,stdin);
 (gdb) n
-67      output(farr,sarr,r);
+enter the value of the first strings:run 
+7       printf("enter the value of the second strings:");
 (gdb) n
-run
-is greater than the
-god
-68    return 0;
+8       fgets(b,30,stdin);
 (gdb) n
-69  }(gdb) nn
-Undefined command: "nn".  Try "help".
+enter the value of the second strings:world
+9   }
+(gdb) n
+main () at p6original.c:67
+67      r=compute(farr,sarr);
+(gdb) s
+compute (a=0x7fffbb45c6a0 "run \n", b=0x7fffbb45c6c0 "world\n")
+    at p6original.c:13
+13      int i=0;
+(gdb) n
+14      for(i=0;i<30;i++)
+(gdb) n
+16          int el=a[i];
+(gdb) n
+17          int sel=b[i];
+(gdb) n
+18          if(el>sel)
+(gdb) n
+23          else if(sel==el)
+(gdb) n
+29           return 0;
+(gdb) n
+48  }
+(gdb) n
+main () at p6original.c:68
+68      output(farr,sarr,r);
+(gdb) s
+output (a=0x7fffbb45c6a0 "run \n", b=0x7fffbb45c6c0 "world\n", result=0)
+    at p6original.c:51
+51      if(result==1)
+(gdb) n
+55      else if(result==0)
+(gdb) n
+57          printf("%sis greater than the word\n%s",b,a);
+(gdb) n
+world
+is greater than the word
+run 
+60  }
+(gdb) n
+main () at p6original.c:69
+69    return 0;
+(gdb) n
+70  }(gdb) c
+Continuing.
+[Inferior 1 (process 1161) exited normally]
 (gdb) q
-A debugging session is active.
-
-    Inferior 1 [process 1348] will be killed.
-
-Quit anyway? (y or n) y
  
